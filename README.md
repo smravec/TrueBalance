@@ -1,73 +1,164 @@
-# Welcome to your Lovable project
+# Tiny Button App
 
-## Project info
+A modern React + Express.js full-stack application with a beautiful UI and REST API.
 
-**URL**: https://lovable.dev/projects/8ffd43ca-c9ef-43e8-a3fd-db92858563ba
+## 🚀 Features
 
-## How can I edit this code?
+### Frontend (React + Vite)
+- ⚡ Vite for fast development and building
+- ⚛️ React 18 with TypeScript
+- 🎨 Beautiful UI with Tailwind CSS and shadcn/ui components
+- 🔄 React Query for data fetching and caching
+- 🧭 React Router for navigation
+- 📱 Responsive design
 
-There are several ways of editing your application.
+### Backend (Express.js)
+- 🚀 Express.js REST API
+- 🛡️ Security middleware (Helmet, CORS, Rate Limiting)
+- 📊 Product management with CSV data source
+- 🔍 Search, pagination, and sorting
+- 📈 Statistics endpoints
+- 🏥 Health monitoring
 
-**Use Lovable**
+## 🏗️ Project Structure
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/8ffd43ca-c9ef-43e8-a3fd-db92858563ba) and start prompting.
+```
+tiny-button-app/
+├── src/                    # Frontend React app
+│   ├── components/         # Reusable UI components
+│   ├── pages/             # Page components
+│   ├── hooks/             # Custom React hooks
+│   └── lib/               # Utilities
+├── backend/               # Express.js API
+│   ├── src/
+│   │   ├── controllers/   # Route controllers
+│   │   ├── models/        # Data models
+│   │   ├── routes/        # API routes
+│   │   └── middleware/    # Custom middleware
+│   └── data/              # Data files
+└── package.json           # Root workspace config
+```
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🚀 Quick Start
 
-**Use your preferred IDE**
+### Prerequisites
+- Node.js 18+
+- npm or yarn
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Installation
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+1. **Clone and install dependencies:**
+```bash
+git clone <repository-url>
+cd tiny-button-app
+npm install
+```
 
-Follow these steps:
+2. **Install backend dependencies:**
+```bash
+npm run install:backend
+```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+3. **Start development servers:**
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+This will start:
+- Frontend: http://localhost:8080
+- Backend API: http://localhost:3001
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Individual Commands
 
-**Use GitHub Codespaces**
+**Frontend only:**
+```bash
+npm run dev:frontend
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+**Backend only:**
+```bash
+npm run dev:backend
+```
 
-## What technologies are used for this project?
+## 📡 API Endpoints
 
-This project is built with:
+### Health Check
+- `GET /api/health` - Basic health check
+- `GET /api/health/detailed` - Detailed system info
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Products
+- `GET /api/products` - Get products (with pagination, search, sorting)
+- `GET /api/products/:id` - Get specific product
+- `GET /api/products/search/:query` - Search products
+- `GET /api/products/stats/overview` - Product statistics
 
-## How can I deploy this project?
+### Example API Usage
 
-Simply open [Lovable](https://lovable.dev/projects/8ffd43ca-c9ef-43e8-a3fd-db92858563ba) and click on Share -> Publish.
+```javascript
+// Get products with pagination
+fetch('http://localhost:3001/api/products?page=1&limit=10&search=laptop')
 
-## Can I connect a custom domain to my Lovable project?
+// Search products
+fetch('http://localhost:3001/api/products/search/smartphone')
 
-Yes, you can!
+// Get product statistics
+fetch('http://localhost:3001/api/products/stats/overview')
+```
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 🛠️ Development
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+### Frontend Development
+The frontend uses Vite for fast development with hot module replacement.
+
+### Backend Development
+The backend uses nodemon for automatic restart during development.
+
+### Adding New Features
+
+1. **Frontend**: Add components in `src/components/` and pages in `src/pages/`
+2. **Backend**: Add routes in `backend/src/routes/` and controllers in `backend/src/controllers/`
+
+## 🚀 Deployment
+
+### Frontend
+```bash
+npm run build
+# Deploy the dist/ folder to your hosting service
+```
+
+### Backend
+```bash
+cd backend
+npm start
+# Deploy to your server or cloud platform
+```
+
+## 📦 Available Scripts
+
+- `npm run dev` - Start both frontend and backend
+- `npm run dev:frontend` - Start only frontend
+- `npm run dev:backend` - Start only backend
+- `npm run build` - Build frontend for production
+- `npm run start:backend` - Start backend in production mode
+- `npm run install:backend` - Install backend dependencies
+
+## 🎨 UI Components
+
+This project uses shadcn/ui components with Tailwind CSS for styling. All components are located in `src/components/ui/`.
+
+## 📊 Data
+
+The application uses CSV data from `backend/src/data/products_100.csv` containing product information with VAT, pricing, descriptions, and company details.
+
+## 🔧 Configuration
+
+### Environment Variables
+
+**Backend** (`backend/.env`):
+- `PORT` - Server port (default: 3001)
+- `NODE_ENV` - Environment
+- `FRONTEND_URL` - Frontend URL for CORS
+
+## 📝 License
+
+MIT License
