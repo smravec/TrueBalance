@@ -42,10 +42,6 @@ export const BrainTLogo = ({ className }: BrainTLogoProps) => {
       <ellipse cx="16" cy="12" rx="1.2" ry="1" fill="#66FF80" opacity="0.6" />
       <ellipse cx="26" cy="12" rx="1.2" ry="1" fill="#66FF80" opacity="0.6" />
       
-      {/* Side "ears" on the head */}
-      <ellipse cx="2" cy="13" rx="2.5" ry="4" fill="white" stroke="currentColor" strokeWidth="1" opacity="0.8" />
-      <ellipse cx="38" cy="13" rx="2.5" ry="4" fill="white" stroke="currentColor" strokeWidth="1" opacity="0.8" />
-      
       {/* Separate robot torso/body */}
       <rect
         x="10"
@@ -58,10 +54,6 @@ export const BrainTLogo = ({ className }: BrainTLogoProps) => {
         strokeWidth="1.5"
         opacity="0.9"
       />
-      
-      {/* Torso details */}
-      <circle cx="13" cy="32" r="1" fill="currentColor" opacity="0.3" />
-      <circle cx="27" cy="32" r="1" fill="currentColor" opacity="0.3" />
       
       {/* Connection between head and torso (like a neck) */}
       <rect x="18" y="22" width="4" height="3" rx="2" fill="white" stroke="currentColor" strokeWidth="1" opacity="0.7" />
