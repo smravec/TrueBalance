@@ -25,16 +25,16 @@ const Index = () => {
             <div className="p-2 bg-white rounded-lg shadow-card">
               <Zap className="w-8 h-8 text-primary" />
             </div>
-            <span className="text-2xl font-inter font-semibold text-foreground">TrueBalance</span>
+            <span className="text-2xl font-inter font-semibold text-black">TrueBalance</span>
           </div>
           
           {/* Main heading in Trullion style */}
           <div className="space-y-6">
-            <h1 className="font-playfair text-5xl lg:text-6xl font-medium text-foreground leading-[1.1] tracking-tight">
+            <h1 className="font-playfair text-5xl lg:text-6xl font-medium text-black leading-[1.1] tracking-tight">
               Meet your fully AI-powered accounting assistant
             </h1>
             
-            <p className="font-inter text-lg text-muted-foreground leading-relaxed max-w-md">
+            <p className="font-inter text-lg text-black leading-relaxed max-w-md">
               Delivering expert guidance while taking care of your accounting and taxes, so you can focus on what matters most.
             </p>
           </div>
