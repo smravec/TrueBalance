@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import { Brain, Sparkles, Zap } from "lucide-react";
+import { Brain, Zap } from "lucide-react";
 
 const Index = () => {
   const { toast } = useToast();
@@ -27,9 +27,6 @@ const Index = () => {
               <div className="p-3 bg-gradient-to-br from-primary/20 via-white to-accent/20 rounded-xl shadow-elegant border border-white/40 backdrop-blur-sm">
                 <div className="relative">
                   <Brain className="w-10 h-10 text-primary" />
-                  {/* Floating sparkles for AI effect */}
-                  <Sparkles className="w-4 h-4 text-accent absolute -top-1 -right-1 animate-pulse" />
-                  <Sparkles className="w-3 h-3 text-primary absolute -bottom-1 -left-1 animate-pulse delay-300" />
                 </div>
               </div>
               {/* Subtle glow effect */}
