@@ -11,15 +11,15 @@ All colors MUST be HSL.
     /* Clean background */
     --background: 210 100% 90%;
     --background-gradient: linear-gradient(135deg, hsl(120 60% 65%), hsl(150 50% 70%), hsl(140 70% 45%), hsl(145 60% 25%));
-    --foreground: 215 16% 29%;
+    --foreground: 0 0% 10%;
 
     /* Card styles */
     --card: 0 0% 100%;
-    --card-foreground: 215 16% 29%;
+    --card-foreground: 0 0% 15%;
 
     /* Popover styles */
     --popover: 0 0% 100%;
-    --popover-foreground: 215 16% 29%;
+    --popover-foreground: 0 0% 15%;
 
     /* Primary - Navy blue */
     --primary: 217 67% 33%;
@@ -33,7 +33,7 @@ All colors MUST be HSL.
 
     /* Muted colors */
     --muted: 220 14% 94%;
-    --muted-foreground: 215 16% 47%;
+    --muted-foreground: 0 0% 30%;
 
     /* Accent colors - Teal */
     --accent: 177 80% 32%;
