@@ -95,6 +95,4 @@ The built files will be in the `dist/` directory, ready for deployment to any st
 npm run preview
 ```
 
-## 📝 License
-
-MIT License
+## 📝 LicenseMIT License
