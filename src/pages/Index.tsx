@@ -16,11 +16,11 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-bg flex flex-col">
       {/* Header with Logo */}
       <header className="p-6">
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center justify-center space-x-3">
           <div className="p-2 bg-primary rounded-lg">
             <Zap className="w-8 h-8 text-primary-foreground" />
           </div>
-          <h2 className="text-2xl font-bold text-foreground">Company name</h2>
+          <h2 className="text-2xl font-bold text-foreground">TrueBalance</h2>
         </div>
       </header>
       
