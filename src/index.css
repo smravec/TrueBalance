@@ -8,35 +8,35 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Modern tech gradient background */
-    --background: 220 25% 8%;
-    --background-gradient: linear-gradient(135deg, hsl(220 25% 8%), hsl(225 30% 12%), hsl(180 20% 10%));
-    --foreground: 220 15% 85%;
+    /* Clean light background */
+    --background: 0 0% 98%;
+    --background-gradient: linear-gradient(135deg, hsl(220 30% 98%), hsl(210 25% 96%), hsl(200 20% 94%));
+    --foreground: 220 20% 15%;
 
     /* Card styles */
-    --card: 220 20% 15%;
-    --card-foreground: 220 15% 85%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 15%;
 
     /* Popover styles */
-    --popover: 220 20% 15%;
-    --popover-foreground: 220 15% 85%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 15%;
 
-    /* Primary - Royal blue */
-    --primary: 225 73% 57%;
-    --primary-glow: 225 100% 70%;
+    /* Primary - Modern blue */
+    --primary: 214 84% 56%;
+    --primary-glow: 214 100% 65%;
     --primary-foreground: 0 0% 100%;
-    --primary-gradient: linear-gradient(135deg, hsl(225 73% 57%), hsl(230 73% 65%));
+    --primary-gradient: linear-gradient(135deg, hsl(214 84% 56%), hsl(218 89% 62%));
 
-    /* Secondary - Dark blue-gray */
-    --secondary: 220 25% 18%;
-    --secondary-foreground: 220 15% 85%;
+    /* Secondary - Light gray */
+    --secondary: 210 20% 90%;
+    --secondary-foreground: 220 20% 15%;
 
     /* Muted colors */
-    --muted: 220 20% 20%;
-    --muted-foreground: 220 15% 65%;
+    --muted: 210 20% 94%;
+    --muted-foreground: 220 15% 45%;
 
-    /* Accent colors - Teal */
-    --accent: 180 100% 30%;
+    /* Accent colors - Fresh teal */
+    --accent: 175 85% 45%;
     --accent-foreground: 0 0% 100%;
 
     /* Destructive colors */
@@ -44,17 +44,18 @@ All colors MUST be HSL.
     --destructive-foreground: 0 0% 100%;
 
     /* Border and input */
-    --border: 220 20% 25%;
-    --input: 220 20% 20%;
-    --ring: 180 100% 35%;
+    --border: 210 20% 85%;
+    --input: 210 20% 94%;
+    --ring: 214 84% 56%;
 
     /* Design system tokens */
-    --radius: 0.75rem;
+    --radius: 1rem;
     
     /* Shadows and effects */
-    --shadow-elegant: 0 10px 40px -10px hsl(225 73% 57% / 0.3);
-    --shadow-glow: 0 0 30px hsl(225 100% 70% / 0.4);
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-elegant: 0 20px 40px -12px hsl(214 84% 56% / 0.15);
+    --shadow-glow: 0 0 40px hsl(214 100% 65% / 0.25);
+    --shadow-card: 0 4px 20px hsl(220 20% 15% / 0.08);
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
     --sidebar-background: 0 0% 98%;
 
