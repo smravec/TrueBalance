@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import { Brain, Zap } from "lucide-react";
+import { Zap } from "lucide-react";
+import { BrainTLogo } from "@/components/BrainTLogo";
 
 const Index = () => {
   const { toast } = useToast();
@@ -26,7 +27,7 @@ const Index = () => {
               {/* Main logo container with gradient */}
               <div className="p-3 bg-gradient-to-br from-primary/20 via-white to-accent/20 rounded-xl shadow-elegant border border-white/40 backdrop-blur-sm">
                 <div className="relative">
-                  <Brain className="w-10 h-10 text-primary" />
+                  <BrainTLogo className="w-10 h-10 text-primary" />
                 </div>
               </div>
               {/* Subtle glow effect */}
