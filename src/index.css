@@ -9,8 +9,8 @@ All colors MUST be HSL.
 @layer base {
   :root {
     /* Clean background */
-    --background: 217 25% 97%;
-    --background-gradient: linear-gradient(135deg, hsl(217 30% 95%), hsl(217 25% 93%), hsl(217 20% 91%));
+    --background: 210 100% 88%;
+    --background-gradient: linear-gradient(135deg, hsl(210 100% 85%), hsl(215 100% 82%), hsl(220 100% 80%));
     --foreground: 215 16% 29%;
 
     /* Card styles */
