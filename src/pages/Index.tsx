@@ -28,9 +28,6 @@ const Index = () => {
       <div className="flex-1 flex items-center justify-center p-8">
         <div className="text-center space-y-8">
           <div className="space-y-4">
-            <h1 className="text-6xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-              Hello World
-            </h1>
             <p className="text-xl text-muted-foreground max-w-md mx-auto">
               A beautiful, simple app with one perfect button
             </p>
