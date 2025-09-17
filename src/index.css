@@ -10,7 +10,7 @@ All colors MUST be HSL.
   :root {
     /* Clean background */
     --background: 210 100% 90%;
-    --background-gradient: linear-gradient(135deg, hsl(120 70% 75%), hsl(150 60% 80%), hsl(210 100% 85%));
+    --background-gradient: linear-gradient(135deg, hsl(120 60% 65%), hsl(150 50% 70%), hsl(210 80% 75%), hsl(220 40% 35%));
     --foreground: 215 16% 29%;
 
     /* Card styles */
