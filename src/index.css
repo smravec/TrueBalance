@@ -8,35 +8,35 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Clean light background */
+    /* Clean background */
     --background: 0 0% 98%;
-    --background-gradient: linear-gradient(135deg, hsl(220 30% 98%), hsl(210 25% 96%), hsl(200 20% 94%));
-    --foreground: 220 20% 15%;
+    --background-gradient: linear-gradient(135deg, hsl(160 30% 88%), hsl(150 25% 78%), hsl(140 20% 68%));
+    --foreground: 220 25% 20%;
 
     /* Card styles */
     --card: 0 0% 100%;
-    --card-foreground: 220 20% 15%;
+    --card-foreground: 220 25% 20%;
 
     /* Popover styles */
     --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 15%;
+    --popover-foreground: 220 25% 20%;
 
-    /* Primary - Modern blue */
-    --primary: 214 84% 56%;
-    --primary-glow: 214 100% 65%;
+    /* Primary - Professional teal */
+    --primary: 160 70% 35%;
+    --primary-glow: 160 80% 45%;
     --primary-foreground: 0 0% 100%;
-    --primary-gradient: linear-gradient(135deg, hsl(214 84% 56%), hsl(218 89% 62%));
+    --primary-gradient: linear-gradient(135deg, hsl(160 70% 35%), hsl(155 75% 40%));
 
     /* Secondary - Light gray */
     --secondary: 210 20% 90%;
-    --secondary-foreground: 220 20% 15%;
+    --secondary-foreground: 220 25% 20%;
 
     /* Muted colors */
     --muted: 210 20% 94%;
-    --muted-foreground: 220 15% 45%;
+    --muted-foreground: 220 20% 50%;
 
-    /* Accent colors - Fresh teal */
-    --accent: 175 85% 45%;
+    /* Accent colors - Professional green */
+    --accent: 150 85% 40%;
     --accent-foreground: 0 0% 100%;
 
     /* Destructive colors */
@@ -46,16 +46,16 @@ All colors MUST be HSL.
     /* Border and input */
     --border: 210 20% 85%;
     --input: 210 20% 94%;
-    --ring: 214 84% 56%;
+    --ring: 160 70% 35%;
 
     /* Design system tokens */
-    --radius: 1rem;
+    --radius: 0.5rem;
     
     /* Shadows and effects */
-    --shadow-elegant: 0 20px 40px -12px hsl(214 84% 56% / 0.15);
-    --shadow-glow: 0 0 40px hsl(214 100% 65% / 0.25);
-    --shadow-card: 0 4px 20px hsl(220 20% 15% / 0.08);
-    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-elegant: 0 10px 25px -5px hsl(160 70% 35% / 0.15);
+    --shadow-glow: 0 0 30px hsl(160 80% 45% / 0.2);
+    --shadow-card: 0 2px 10px hsl(220 25% 20% / 0.1);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     --sidebar-background: 0 0% 98%;
 
