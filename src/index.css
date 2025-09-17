@@ -8,35 +8,35 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Modern gradient background */
-    --background: 240 10% 98%;
-    --background-gradient: linear-gradient(135deg, hsl(240 10% 98%), hsl(250 15% 96%));
-    --foreground: 240 10% 8%;
+    /* Clean background */
+    --background: 210 100% 90%;
+    --background-gradient: linear-gradient(135deg, hsl(120 60% 65%), hsl(150 50% 70%), hsl(140 70% 45%), hsl(145 60% 25%));
+    --foreground: 150 30% 70%;
 
     /* Card styles */
     --card: 0 0% 100%;
-    --card-foreground: 240 10% 8%;
+    --card-foreground: 150 30% 65%;
 
     /* Popover styles */
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 8%;
+    --popover-foreground: 150 30% 65%;
 
-    /* Primary - Beautiful red gradient */
-    --primary: 0 84% 58%;
-    --primary-glow: 0 100% 70%;
+    /* Primary - Money green */
+    --primary: 140 70% 25%;
+    --primary-glow: 140 70% 35%;
     --primary-foreground: 0 0% 100%;
-    --primary-gradient: linear-gradient(135deg, hsl(0 84% 58%), hsl(10 84% 65%));
+    --primary-gradient: linear-gradient(135deg, hsl(140 70% 25%), hsl(140 70% 30%));
 
-    /* Secondary - Soft purple */
-    --secondary: 250 20% 95%;
-    --secondary-foreground: 250 84% 58%;
+    /* Secondary - Emerald green */
+    --secondary: 158 84% 40%;
+    --secondary-foreground: 0 0% 100%;
 
     /* Muted colors */
-    --muted: 250 15% 94%;
-    --muted-foreground: 240 10% 45%;
+    --muted: 220 14% 94%;
+    --muted-foreground: 150 25% 75%;
 
-    /* Accent colors */
-    --accent: 250 84% 58%;
+    /* Accent colors - Teal */
+    --accent: 177 80% 32%;
     --accent-foreground: 0 0% 100%;
 
     /* Destructive colors */
@@ -44,16 +44,17 @@ All colors MUST be HSL.
     --destructive-foreground: 0 0% 100%;
 
     /* Border and input */
-    --border: 250 20% 88%;
-    --input: 250 20% 88%;
-    --ring: 250 84% 58%;
+    --border: 220 14% 88%;
+    --input: 220 14% 94%;
+    --ring: 140 70% 25%;
 
     /* Design system tokens */
-    --radius: 0.75rem;
+    --radius: 0.5rem;
     
     /* Shadows and effects */
-    --shadow-elegant: 0 10px 40px -10px hsl(0 84% 58% / 0.3);
-    --shadow-glow: 0 0 30px hsl(0 100% 70% / 0.4);
+    --shadow-elegant: 0 10px 25px -5px hsl(140 70% 25% / 0.15);
+    --shadow-glow: 0 0 30px hsl(140 70% 35% / 0.2);
+    --shadow-card: 0 2px 10px hsl(150 30% 65% / 0.1);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     --sidebar-background: 0 0% 98%;
