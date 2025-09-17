@@ -42,7 +42,7 @@ const Index = () => {
             onClick={handleButtonClick}
             className="text-lg px-12 py-6 h-auto"
           >
-            Click Me ✨
+            Ask your new accountant
           </Button>
         </div>
       </div>
