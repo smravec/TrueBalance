@@ -59,8 +59,8 @@ export const BrainTLogo = ({ className }: BrainTLogoProps) => {
         opacity="0.9"
       />
       
-      {/* T letter prominently displayed on the torso */}
-      <g fill="currentColor" opacity="0.8">
+      {/* T letter prominently displayed on the torso - now black */}
+      <g fill="black" opacity="0.8">
         {/* T horizontal bar */}
         <rect x="15" y="28" width="10" height="2.5" rx="1.25" />
         {/* T vertical bar */}
