@@ -28,12 +28,9 @@ const Index = () => {
       <div className="flex-1 flex items-center justify-center p-8">
         <div className="text-center space-y-8">
           <div className="space-y-4">
-            <h1 className="text-6xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-              Let's check your TrueBalance!
+            <h1 className="text-5xl font-bold bg-gradient-primary bg-clip-text text-transparent max-w-4xl mx-auto leading-tight">
+              Meet your fully AI-powered accountant — delivering expert guidance while taking care of your accounting and taxes, so you can focus on what matters most.
             </h1>
-            <p className="text-xl text-muted-foreground max-w-md mx-auto">
-              A beautiful, simple app with one perfect button
-            </p>
           </div>
           
           <Button 
