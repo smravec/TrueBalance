@@ -34,13 +34,13 @@ export const BrainTLogo = ({ className }: BrainTLogoProps) => {
         opacity="0.9"
       />
       
-      {/* White eyes for contrast */}
-      <ellipse cx="15" cy="13" rx="3.5" ry="3" fill="white" opacity="0.9" />
-      <ellipse cx="25" cy="13" rx="3.5" ry="3" fill="white" opacity="0.9" />
+      {/* Bright neon green eyes */}
+      <ellipse cx="15" cy="13" rx="3.5" ry="3" fill="#00FF41" opacity="0.9" />
+      <ellipse cx="25" cy="13" rx="3.5" ry="3" fill="#00FF41" opacity="0.9" />
       
-      {/* Eye highlights - darker for white eyes */}
-      <ellipse cx="16" cy="12" rx="1.2" ry="1" fill="#E0E0E0" opacity="0.6" />
-      <ellipse cx="26" cy="12" rx="1.2" ry="1" fill="#E0E0E0" opacity="0.6" />
+      {/* Eye highlights - lighter green */}
+      <ellipse cx="16" cy="12" rx="1.2" ry="1" fill="#66FF80" opacity="0.6" />
+      <ellipse cx="26" cy="12" rx="1.2" ry="1" fill="#66FF80" opacity="0.6" />
       
       {/* Side "ears" on the head */}
       <ellipse cx="2" cy="13" rx="2.5" ry="4" fill="white" stroke="currentColor" strokeWidth="1" opacity="0.8" />
