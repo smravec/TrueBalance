@@ -52,7 +52,7 @@ const Index = () => {
           </div>
           
           {/* Trust indicators */}
-          <div className="flex items-center space-x-6 pt-6 text-muted-foreground text-sm font-inter">
+          <div className="flex items-center space-x-6 pt-6 text-black text-sm font-inter">
             <div className="flex items-center space-x-2">
               <div className="w-2 h-2 bg-primary rounded-full"></div>
               <span>AI-Powered</span>
