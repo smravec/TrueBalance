@@ -23,24 +23,24 @@ export const BrainTLogo = ({ className }: BrainTLogoProps) => {
         opacity="0.9"
       />
       
-      {/* Dark screen area on head */}
+      {/* Dark screen area on head - now black */}
       <rect
         x="6"
         y="6"
         width="28"
         height="14"
         rx="7"
-        fill="currentColor"
-        opacity="0.8"
+        fill="black"
+        opacity="0.9"
       />
       
-      {/* Glowing blue eyes - bigger for the larger head */}
-      <ellipse cx="15" cy="13" rx="3.5" ry="3" fill="#00D4FF" opacity="0.9" />
-      <ellipse cx="25" cy="13" rx="3.5" ry="3" fill="#00D4FF" opacity="0.9" />
+      {/* White eyes for contrast */}
+      <ellipse cx="15" cy="13" rx="3.5" ry="3" fill="white" opacity="0.9" />
+      <ellipse cx="25" cy="13" rx="3.5" ry="3" fill="white" opacity="0.9" />
       
-      {/* Eye highlights */}
-      <ellipse cx="16" cy="12" rx="1.2" ry="1" fill="#87CEEB" opacity="0.6" />
-      <ellipse cx="26" cy="12" rx="1.2" ry="1" fill="#87CEEB" opacity="0.6" />
+      {/* Eye highlights - darker for white eyes */}
+      <ellipse cx="16" cy="12" rx="1.2" ry="1" fill="#E0E0E0" opacity="0.6" />
+      <ellipse cx="26" cy="12" rx="1.2" ry="1" fill="#E0E0E0" opacity="0.6" />
       
       {/* Side "ears" on the head */}
       <ellipse cx="2" cy="13" rx="2.5" ry="4" fill="white" stroke="currentColor" strokeWidth="1" opacity="0.8" />
