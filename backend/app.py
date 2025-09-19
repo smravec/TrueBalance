@@ -100,8 +100,9 @@ def voiceflow_interact():
             json=payload,
             headers={ 
                 'Authorization': f'Bearer {api_key}',
-                'Content-Type': 'application/json'
-            },
+                'Content-Type': 'application/json',
+                'versionID': 'production'
+            }
         )
         
         print(f"📥 Voiceflow Response:")
