@@ -201,7 +201,22 @@ def voiceflow_connect():
         if t.get("type") == "text"
     ]
 
-    return jsonify({"messages": messages})
+    # Analyze messages to determine deductible status
+    deductible = True  # Default value
+    combined_messages = " ".join(messages).lower()
+    
+    if "false" in combined_messages:
+        deductible = False
+    elif "true" in combined_messages:
+        deductible = True
+
+    response_data = {
+        "deductible": deductible
+    }
+    
+    print("DEBUG Final response:", response_data)
+    
+    return jsonify(response_data)
 
 # @app.route('/api/voiceflow', methods=['POST','GET'])
 # def voiceflow_interact():
@@ -275,9 +290,6 @@ def voiceflow_connect():
 #     except Exception as e:
 #         print(f"❌ Internal error: {str(e)}")
 #         return jsonify({'success': False, 'error': f'Internal error: {str(e)}'}), 500
-
-
-
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5001)

@@ -133,15 +133,18 @@ const Index = () => {
   };
 
   const analyzeWithVoiceflow = async (text: string) => {
-    const response = await fetch("http://localhost:5001/api/dummy-voiceflow", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        text: text,
-      }),
-    });
+    const response = await fetch(
+      "http://localhost:5001/api/voiceflow-connect",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          text: text,
+        }),
+      }
+    );
 
     const result = await response.json();
     console.log("Voiceflow Analysis Result:", result);
