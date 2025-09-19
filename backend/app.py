@@ -81,25 +81,26 @@ def voiceflow_interact():
         #message = data.get('message', 'Hello')
         
         # Create the proper Voiceflow request payload
-        # "type": "event",
-        #    "payload": {
-        #        "name": "api_call"
-        #    }
+        # 
         #payload = {
         #    "userID": user_id,
+
+        raw_text = extract_text_from_invoice()
+
         payload = {
             "userID": user_id,
-            "type": "launch"
+            "type": "text",
+            "payload": raw_text
         }                
         print(f"📤 Sending to Voiceflow:")
         print(f"   URL: https://general-runtime.voiceflow.com/state/staging/user/{user_id}/interact")
         print(f"   Payload: {payload}")
         
         response = requests.post(
-            f'https://general-runtime.voiceflow.com/state/{project_id}/user/{user_id}/interact',
+            f'https://general-runtime.voiceflow.com/state/user/{user_id}/interact',
             json=payload,
             headers={ 
-                'Authorization': f'Bearer {api_key}',
+                'Authorization': f'{api_key}',
                 'Content-Type': 'application/json',
                 'versionID': 'production'
             }
@@ -113,13 +114,8 @@ def voiceflow_interact():
             'success': True,
             'status_code': response.status_code,
             'voiceflow_response': response.json() if response.headers.get('content-type', '').startswith('application/json') else response.text,
-            'debug_info': {
-                'url': f'https://general-runtime.voiceflow.com/state/{project_id}/user/{user_id}/interact',
-                'project_id': project_id,
-                'user_id': user_id,
-                'message': 'Hello'
-            }
         })
+
     except requests.exceptions.RequestException as e:
         print(f"❌ Request failed: {str(e)}")
         return jsonify({'success': False, 'error': f'Request failed: {str(e)}'}), 500
