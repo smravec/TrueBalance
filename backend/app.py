@@ -36,6 +36,7 @@ def voiceflow_interact():
         project_id = os.getenv('VOICEFLOW_PROJECT_ID')
         api_key = os.getenv('VOICEFLOW_API_KEY')
         user_id = '123'
+        
 
         if not project_id or not api_key:
             return jsonify({
@@ -56,24 +57,25 @@ def voiceflow_interact():
         #message = data.get('message', 'Hello')
         
         # Create the proper Voiceflow request payload
+        # "type": "event",
+        #    "payload": {
+        #        "name": "api_call"
+        #    }
+        #payload = {
+        #    "userID": user_id,
         payload = {
-            "action": {
-                "type": "event",
-                "payload": {
-                    "name": "api"
-                }
-            }
-        }
-                
+            "userID": user_id,
+            "type": "launch"
+        }                
         print(f"📤 Sending to Voiceflow:")
-        print(f"   URL: https://general-runtime.voiceflow.com/state/{project_id}/user/{user_id}/interact")
+        print(f"   URL: https://general-runtime.voiceflow.com/state/staging/user/{user_id}/interact")
         print(f"   Payload: {payload}")
         
         response = requests.post(
             f'https://general-runtime.voiceflow.com/state/{project_id}/user/{user_id}/interact',
             json=payload,
             headers={ 
-                'Authorization': api_key,
+                'Authorization': f'Bearer {api_key}',
                 'Content-Type': 'application/json'
             },
         )
