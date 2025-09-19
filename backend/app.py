@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 from flask_cors import CORS
 import requests
 import os
+from extract_pdf_text import extract_text_from_invoice
 
 load_dotenv()
 
@@ -25,6 +26,29 @@ def products():
             {'id': 3, 'name': 'Sample Product 3', 'price': 19.99}
         ]
     })
+
+@app.route('/api/extract-pdf-text', methods=['GET'])
+def extract_pdf_text_route():
+    """Extract text from Invoice1.pdf and return it as JSON"""
+    try:
+        extracted_text = extract_text_from_invoice()
+        
+        if extracted_text is None:
+            return jsonify({
+                'success': False,
+                'error': 'Failed to extract text from PDF. File may not exist or be corrupted.'
+            }), 404
+        
+        return jsonify({
+            'success': True,
+            'text': extracted_text
+        })
+        
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': f'An error occurred: {str(e)}'
+        }), 500
 
 @app.route('/api/voiceflow', methods=['POST','GET'])
 def voiceflow_interact():
@@ -102,4 +126,4 @@ def voiceflow_interact():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(debug=True, host='0.0.0.0', port=5001)
