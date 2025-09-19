@@ -39,10 +39,11 @@ const Index = () => {
 
       <main className="flex flex-col mt-5 w-screen items-center justify-center ">
         <h1 className="mb-10 text-3xl text-center font-inter font-bold text-black tracking-tight">
-          Instantly see if your expenses <br /> are tax-deductible with AI
+          Instantly see if your expenses <br /> are VAT-deductible with agentic
+          AI
         </h1>
         <div className="flex justify-center items-center h-[200px] w-[550px]  bg-white rounded-lg ">
-          Upload your invoice
+          Upload your invoices
         </div>
 
         {/* CTA Button */}
@@ -52,7 +53,7 @@ const Index = () => {
           onClick={handleButtonClick}
           className="font-inter mt-10 text-base  p-4 h-auto rounded-lg font-medium shadow-elegant hover:shadow-glow transition-all duration-300"
         >
-          Get possible VAT write-off
+          Get possible VAT write-offs
         </Button>
 
         {/* Trust indicators */}
