@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 from flask_cors import CORS
 import requests
 import os
-from extract_pdf_text import extract_text_from_invoice
+from extract_pdf_text import extract_text_from_invoice, extract_text_from_pdf
 
 load_dotenv()
 
@@ -27,21 +27,147 @@ def products():
         ]
     })
 
-@app.route('/api/extract-pdf-text', methods=['GET'])
+@app.route('/api/extract-pdf-text', methods=['POST'])
 def extract_pdf_text_route():
-    """Extract text from Invoice1.pdf and return it as JSON"""
+    """Extract text from uploaded PDF file and return it as JSON"""
     try:
-        extracted_text = extract_text_from_invoice()
+        # Check if a file was uploaded
+        if 'file' not in request.files:
+            return jsonify({
+                'success': False,
+                'error': 'No file uploaded. Please include a PDF file in the "file" field.'
+            }), 400
+        
+        file = request.files['file']
+        
+        # Check if file was actually selected
+        if file.filename == '':
+            return jsonify({
+                'success': False,
+                'error': 'No file selected'
+            }), 400
+        
+        # Check if file is a PDF
+        if not file.filename.lower().endswith('.pdf'):
+            return jsonify({
+                'success': False,
+                'error': 'File must be a PDF'
+            }), 400
+        
+        # Extract text from the uploaded PDF
+        extracted_text = extract_text_from_pdf(file)
         
         if extracted_text is None:
             return jsonify({
                 'success': False,
-                'error': 'Failed to extract text from PDF. File may not exist or be corrupted.'
-            }), 404
+                'error': 'Failed to extract text from PDF. File may be corrupted or empty.'
+            }), 422
         
         return jsonify({
             'success': True,
-            'text': extracted_text
+            'filename': file.filename,
+            'text': extracted_text,
+            'text_length': len(extracted_text)
+        })
+        
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': f'An error occurred: {str(e)}'
+        }), 500
+
+@app.route('/api/upload-pdf', methods=['POST'])
+def upload_pdf():
+    """Upload PDF files and extract text from them"""
+    try:
+        # Check if files were uploaded
+        if 'files' not in request.files:
+            return jsonify({
+                'success': False,
+                'error': 'No files uploaded'
+            }), 400
+        
+        files = request.files.getlist('files')
+        
+        if not files or all(file.filename == '' for file in files):
+            return jsonify({
+                'success': False,
+                'error': 'No files selected'
+            }), 400
+        
+        results = []
+        
+        for file in files:
+            if file and file.filename.lower().endswith('.pdf'):
+                try:
+                    # Extract text from the uploaded PDF
+                    extracted_text = extract_text_from_pdf(file)
+                    
+                    if extracted_text:
+                        results.append({
+                            'filename': file.filename,
+                            'success': True,
+                            'text': extracted_text,
+                            'text_length': len(extracted_text)
+                        })
+                    else:
+                        results.append({
+                            'filename': file.filename,
+                            'success': False,
+                            'error': 'Failed to extract text from PDF'
+                        })
+                        
+                except Exception as e:
+                    results.append({
+                        'filename': file.filename,
+                        'success': False,
+                        'error': f'Error processing file: {str(e)}'
+                    })
+            else:
+                results.append({
+                    'filename': file.filename if file else 'Unknown',
+                    'success': False,
+                    'error': 'File is not a PDF or is invalid'
+                })
+        
+        # Check if any files were successfully processed
+        successful_files = [r for r in results if r['success']]
+        
+        return jsonify({
+            'success': len(successful_files) > 0,
+            'message': f'Processed {len(successful_files)} out of {len(results)} files successfully',
+            'results': results,
+            'total_files': len(results),
+            'successful_files': len(successful_files)
+        })
+        
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': f'An error occurred: {str(e)}'
+        }), 500
+
+@app.route('/api/dummy-voiceflow', methods=['POST'])
+def dummy_voiceflow():
+    """Dummy Voiceflow endpoint that accepts text and returns deductible status"""
+    try:
+        # Get JSON data from request
+        data = request.get_json()
+        
+        if not data or 'text' not in data:
+            return jsonify({
+                'success': False,
+                'error': 'Missing "text" field in request body'
+            }), 400
+        
+        text = data.get('text', '')
+        
+        # For now, just return deductible: true for any text
+        # In a real implementation, this would analyze the text
+        return jsonify({
+            'deductible': False,
+            'text_analyzed': text,
+            'analysis': 'This expense appears to be VAT deductible based on Finnish tax law.'
         })
         
     except Exception as e:
