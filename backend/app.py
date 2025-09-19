@@ -31,14 +31,11 @@ def voiceflow_interact():
     print("🚀 Voiceflow endpoint called!")
     try:
         # Get data from request
-        data = request.get_json()
-        print(f"📥 Received data: {data}")
-
+        print('getting data from request')
         # Extract project_id and user_id
         project_id = os.getenv('VOICEFLOW_PROJECT_ID')
         api_key = os.getenv('VOICEFLOW_API_KEY')
-        user_id = data.get('user_id', 'test-user-123')
-        message = data.get('message', 'Hello')
+        user_id = '123'
 
         if not project_id or not api_key:
             return jsonify({
@@ -47,48 +44,53 @@ def voiceflow_interact():
                 'debug_info': {
                     'project_id_set': bool(project_id),
                     'api_key_set': bool(api_key),
-                    'user_id': user_id,
-                    'message': message
+                    'user_id': user_id
                 }
             }), 400
 
         # Voiceflow Runtime API endpoint
-        url = f"https://general-runtime.voiceflow.com/state/{project_id}/user/{user_id}/interact"
-
-        # ✅ Correct payload format (array of actions)
+        print('sending request to voiceflow')
+        
+        # Get the request data from the incoming request
+        #data = request.get_json() or {}
+        #message = data.get('message', 'Hello')
+        
+        # Create the proper Voiceflow request payload
         payload = {
-            'action': [
-                {
-                    'type': 'event',
-                    'payload': {
-                        "event": {
-                            "name": "api_call"
-                        }
-                    }
+            "action": {
+                "type": "event",
+                "payload": {
+                    "name": "api"
                 }
-            ]
+            }
         }
-
-        # ✅ Correct headers
-        headers = {
-            'Content-Type': 'application/json',
-            'Authorization': f'VF.{api_key}'
-            # 'versionID': 'development'  # optional, remove if using published version
-        }
-
-        print(f"🔍 Debug Info:\n   URL: {url}\n   Headers: {headers}\n   Payload: {payload}")
-
-        response = requests.post(url, json=payload, headers=headers)
+                
+        print(f"📤 Sending to Voiceflow:")
+        print(f"   URL: https://general-runtime.voiceflow.com/state/{project_id}/user/{user_id}/interact")
+        print(f"   Payload: {payload}")
+        
+        response = requests.post(
+            f'https://general-runtime.voiceflow.com/state/{project_id}/user/{user_id}/interact',
+            json=payload,
+            headers={ 
+                'Authorization': api_key,
+                'Content-Type': 'application/json'
+            },
+        )
+        
+        print(f"📥 Voiceflow Response:")
+        print(f"   Status: {response.status_code}")
+        print(f"   Headers: {response.text}")
 
         return jsonify({
             'success': True,
             'status_code': response.status_code,
             'voiceflow_response': response.json() if response.headers.get('content-type', '').startswith('application/json') else response.text,
             'debug_info': {
-                'url': url,
+                'url': f'https://general-runtime.voiceflow.com/state/{project_id}/user/{user_id}/interact',
                 'project_id': project_id,
                 'user_id': user_id,
-                'message': message
+                'message': 'Hello'
             }
         })
     except requests.exceptions.RequestException as e:
