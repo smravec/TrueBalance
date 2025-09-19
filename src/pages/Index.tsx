@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { Zap } from "lucide-react";
+import { BrainTLogo } from "@/components/BrainTLogo";
 
 const Index = () => {
   const { toast } = useToast();
@@ -20,12 +21,28 @@ const Index = () => {
       <div className="relative z-10 max-w-6xl mx-auto px-8 grid lg:grid-cols-2 gap-16 items-center">
         {/* Left side - Content */}
         <div className="space-y-8">
-          {/* Logo/Brand */}
-          <div className="flex items-center space-x-3 mb-8">
-            <div className="p-2 bg-white rounded-lg shadow-card">
-              <Zap className="w-8 h-8 text-primary" />
+          {/* Logo/Brand - Enhanced AI Company Look */}
+          <div className="flex items-center space-x-4 mb-8">
+            <div className="relative group">
+              {/* Main logo container with gradient */}
+              <div className="p-3 bg-gradient-to-br from-primary/20 via-white to-accent/20 rounded-xl shadow-elegant border border-white/40 backdrop-blur-sm">
+                <div className="relative">
+                  <BrainTLogo className="w-10 h-10 text-primary" />
+                </div>
+              </div>
+              {/* Subtle glow effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 rounded-xl blur-lg opacity-50 group-hover:opacity-75 transition-opacity duration-300"></div>
             </div>
-            <span className="text-2xl font-inter font-semibold text-black">TrueBalance</span>
+            
+            {/* Enhanced company name */}
+            <div className="flex flex-col">
+              <span className="text-3xl font-inter font-bold text-black tracking-tight">
+                True<span className="text-primary">Balance</span>
+              </span>
+              <span className="text-xs font-inter font-medium text-black/60 tracking-wider uppercase">
+                AI Intelligence
+              </span>
+            </div>
           </div>
           
           {/* Main heading in Trullion style */}
