@@ -25,7 +25,7 @@ python app.py
 
 The frontend will be available at http://localhost:8080
 
-###📋 Key Technical Components
+### 📋 Key Technical Components
 
 Document Processing – Extracts and cleans text from PDFs with precision.
 
@@ -37,7 +37,7 @@ Voiceflow Integration – Manages conversation flow and preserves context.
 
 Legal Reasoning Engine – Interprets retrieved material to deliver clear, reliable tax deductibility insights.
 
-##⚡ How it all comes together:
+## ⚡ How it all comes together:
 These components work in unison to retrieve the most relevant legal precedents and apply them to generate confident, legally informed assessments.
 
 ## 📝 LicenseMIT License
