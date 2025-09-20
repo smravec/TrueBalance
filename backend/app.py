@@ -163,12 +163,13 @@ def dummy_voiceflow():
         }), 500
 
 
-VOICEFLOW_API_KEY = "VF.DM.68cdba1a18ddb97551f8853d.6aGslsozmtESYvqV"
+VOICEFLOW_API_KEY = os.getenv('VOICEFLOW_API_KEY')
 USER_ID = "test_user_1"
 
 @app.route("/api/voiceflow-connect", methods=["POST"])
 def voiceflow_connect():
-    user_input = request.json.get("message", "")
+    user_input = request.json.get("text", "")
+    #print("DEBUG User input:", user_input)
 
     base_url = f"https://general-runtime.voiceflow.com/state/user/{USER_ID}"
     interact_url = f"{base_url}/interact"
@@ -192,8 +193,9 @@ def voiceflow_connect():
         }
     }
     resp = requests.post(interact_url, headers=headers, json=payload)
+    #print("DEBUG VF response:", resp.json())
     traces = resp.json()
-    print("DEBUG VF traces:", traces)
+    #print("DEBUG VF traces:", traces)
 
     messages = [
         t["payload"]["message"]
@@ -202,19 +204,20 @@ def voiceflow_connect():
     ]
 
     # Analyze messages to determine deductible status
-    deductible = True  # Default value
-    combined_messages = " ".join(messages).lower()
+    deductible = False  # Default value
+    #combined_messages = " ".join(messages).lower()
     
-    if "false" in combined_messages:
+    if "False" in messages[-1]:
+        #print("DEBUG False")
         deductible = False
-    elif "true" in combined_messages:
+    if "True" in messages[-1]:
+        #print("DEBUG True")
         deductible = True
-
     response_data = {
         "deductible": deductible
     }
     
-    print("DEBUG Final response:", response_data)
+    # print("DEBUG Final response:", response_data)
     
     return jsonify(response_data)
 
@@ -248,48 +251,54 @@ def voiceflow_connect():
 #         #data = request.get_json() or {}
 #         #message = data.get('message', 'Hello')
         
-#         # Create the proper Voiceflow request payload
-#         # 
-#         #payload = {
-#         #    "userID": user_id,
+        # Create the proper Voiceflow request payload
+        # 
+        #payload = {
+        #    "userID": user_id,
 
-#         raw_text = extract_text_from_invoice()
+#        raw_text = extract_text_from_invoice()
 
-#         payload = {
-#             "userID": user_id,
-#             "type": "text",
-#             "payload": raw_text
-#         }                
-#         print(f"📤 Sending to Voiceflow:")
-#         print(f"   URL: https://general-runtime.voiceflow.com/state/staging/user/{user_id}/interact")
-#         print(f"   Payload: {payload}")
+#        payload = {
+            #"userID": user_id,
+            #"type": "text", 
+            #"payload": raw_text
+        #}                
+        #print(f"📤 Sending to Voiceflow:")
+        #print(f"   URL: https://general-runtime.voiceflow.com/state/staging/user/{user_id}/interact")
+        #print(f"   Payload: {payload}")
         
-#         response = requests.post(
-#             f'https://general-runtime.voiceflow.com/state/user/{user_id}/interact',
-#             json=payload,
-#             headers={ 
-#                 'Authorization': f'{api_key}',
-#                 'Content-Type': 'application/json',
-#                 'versionID': 'production'
-#             }
-#         )
+        #response = requests.post(
+        #    f'https://general-runtime.voiceflow.com/state/{project_id}/user/{user_id}/interact',
+        #    json=payload,
+        #    headers={ 
+        #        'Authorization': f'Bearer {api_key}',
+        #        'Content-Type': 'application/json',
+        #        'versionID': 'production'
+        #    }
+        #)
         
 #         print(f"📥 Voiceflow Response:")
 #         print(f"   Status: {response.status_code}")
 #         print(f"   Headers: {response.text}")
 
-#         return jsonify({
-#             'success': True,
-#             'status_code': response.status_code,
-#             'voiceflow_response': response.json() if response.headers.get('content-type', '').startswith('application/json') else response.text,
-#         })
+        #return jsonify({
+        #    'success': True,
+        #    'status_code': response.status_code,
+        #    'voiceflow_response': response.json() if response.headers.get('content-type', '').startswith('application/json') else response.text,
+        #    'debug_info': {
+        #        'url': f'https://general-runtime.voiceflow.com/state/{project_id}/user/{user_id}/interact',
+        #        'project_id': project_id,
+        #        'user_id': user_id,
+        #        'message': 'Hello'
+        #    }
+        #})
+    #except requests.exceptions.RequestException as e:
+    #    print(f"❌ Request failed: {str(e)}")
+    #    return jsonify({'success': False, 'error': f'Request failed: {str(e)}'}), 500
+    #except Exception as e:
+    #    print(f"❌ Internal error: {str(e)}")
+    #    return jsonify({'success': False, 'error': f'Internal error: {str(e)}'}), 500
 
-#     except requests.exceptions.RequestException as e:
-#         print(f"❌ Request failed: {str(e)}")
-#         return jsonify({'success': False, 'error': f'Request failed: {str(e)}'}), 500
-#     except Exception as e:
-#         print(f"❌ Internal error: {str(e)}")
-#         return jsonify({'success': False, 'error': f'Internal error: {str(e)}'}), 500
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5001)
