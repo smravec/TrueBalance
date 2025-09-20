@@ -17,7 +17,7 @@ This transforms hours of searching and second-guessing into a process that takes
 
 1. **Clone and install dependencies:**
 ```bash
-git clone https://github.com/samuli-ukkola/TrueBalance.git
+git clone https://github.com/smravec/TrueBalance.git
 cd TrueBalance
 npm install
 ```
