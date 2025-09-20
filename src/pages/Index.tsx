@@ -61,6 +61,7 @@ const Index = () => {
         title: "No file selected ❌",
         description: "Please upload a PDF file first.",
         variant: "destructive",
+        className: "text-black",
       });
       return;
     }
@@ -79,6 +80,7 @@ const Index = () => {
         title: "Processing failed ❌",
         description: "An unexpected error occurred.",
         variant: "destructive",
+        className: "text-black",
       });
     } finally {
       // Reset processing state and mark as completed
@@ -133,15 +135,18 @@ const Index = () => {
   };
 
   const analyzeWithVoiceflow = async (text: string) => {
-    const response = await fetch("http://localhost:5001/api/dummy-voiceflow", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        text: text,
-      }),
-    });
+    const response = await fetch(
+      "http://localhost:5001/api/voiceflow-connect",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          text: text,
+        }),
+      }
+    );
 
     const result = await response.json();
     console.log("Voiceflow Analysis Result:", result);
@@ -182,6 +187,7 @@ const Index = () => {
       toast({
         title: "Files uploaded! 📄",
         description: `${files.length} PDF file(s) selected for processing.`,
+        className: "text-black",
       });
     }
   };
